@@ -9,6 +9,9 @@ namespace scene {
 
 class Result : public SceneBase {
 public:
+	bool isGameOver;
+	bool isClear;
+
   Result();
   ~Result();
 
