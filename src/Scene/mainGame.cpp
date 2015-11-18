@@ -12,6 +12,8 @@ es::MainGame::MainGame() :
 
 void es::MainGame::update() {
   isFinish_ = env().isPushKey(KeyBind::Space);
+  auto hoge = env().isPushButton(Mouse::LEFT);
+
 }
 
 
