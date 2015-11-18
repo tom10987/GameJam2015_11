@@ -22,7 +22,7 @@ es::Result::~Result(){
 void es::Result::update() {
   /*isFinish_ = env().isPushKey(GLFW_KEY_UP);
   isFinish_ = env().isPushKey(GLFW_KEY_DOWN);*/
-  isFinish_ = env().isPushKey(KeyBind::Escape);
+  isFinish_ = env().isPushKey(KeyBind::Space);
 }
 
 

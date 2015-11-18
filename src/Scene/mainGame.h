@@ -2,6 +2,7 @@
 #pragma once
 #include "sceneBase.hpp"
 #include "../Objects/Player.h"
+#include "../Objects/EnemyBase.h"
 
 
 namespace engine2d {
@@ -17,6 +18,7 @@ public:
 
 private:
 	Player player;
+  std::vector<pEnemyBase> enemies;
 };
 
 
