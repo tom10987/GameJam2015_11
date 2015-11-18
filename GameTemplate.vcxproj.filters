@@ -126,6 +126,9 @@
     <ClInclude Include="src\gamePlayer.hpp">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="src\Objects\Player.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\lib\appEnv.cpp">
@@ -210,6 +213,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="src\Utility\renderer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Player.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
