@@ -1,6 +1,7 @@
 ﻿
 #pragma once
 #include "sceneBase.hpp"
+#include "../Objects/Player.h"
 
 
 namespace engine2d {
@@ -15,6 +16,7 @@ public:
   void draw() override;
 
 private:
+	Player player;
 };
 
 

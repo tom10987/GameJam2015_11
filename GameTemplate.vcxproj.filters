@@ -129,6 +129,7 @@
     <ClInclude Include="src\gamePlayer.hpp">
       <Filter>Source</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="src\Objects\Enemy\EnemyBase.h">
       <Filter>Enemy</Filter>
     </ClInclude>
@@ -137,6 +138,10 @@
     </ClInclude>
     <ClInclude Include="src\Objects\Enemy\EnemyTwo.h">
       <Filter>Enemy</Filter>
+=======
+    <ClInclude Include="src\Objects\Player.h">
+      <Filter>Source</Filter>
+>>>>>>> e926c56fff8a7babdb41cc831da78e1012dfae30
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -224,11 +229,16 @@
     <ClCompile Include="src\Utility\renderer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\Objects\Enemy\EnemyBase.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
     <ClCompile Include="src\Objects\Enemy\EnemyOne.cpp">
       <Filter>Enemy</Filter>
+=======
+    <ClCompile Include="src\Objects\Player.cpp">
+      <Filter>Source</Filter>
+>>>>>>> e926c56fff8a7babdb41cc831da78e1012dfae30
     </ClCompile>
   </ItemGroup>
 </Project>
