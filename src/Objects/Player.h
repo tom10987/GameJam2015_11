@@ -1,19 +1,19 @@
-
+ï»¿
 #pragma once
 
 class Player {
 public:
 	Player();
-	//ƒƒ“ƒo[•Ï”
-	int hp, atk;			//‘Ì—ÍAUŒ‚—Í
-	float pos_x, pos_y;		//À•Wx, y 
-	float scale_x, scale_y;	//ƒXƒP[ƒ‹x, y
-	float speed;			//ƒXƒs[ƒh
-	float jumpPower;		//ƒWƒƒƒ“ƒv—Í
-	float gaugeBar;			//•KE‹Z‚ÌƒQ[ƒWƒo[
-	bool isJump;			//ƒWƒƒƒ“ƒv‚Ìƒtƒ‰ƒO
-	bool isDeathbrow;		//•KE‹Z‚Ìƒtƒ‰ƒO
-	//ƒƒ“ƒo[ƒƒ\ƒbƒh
-	void update();
-	void draw();
+	//ãƒ¡ãƒ³ãƒãƒ¼å¤‰æ•°
+	int hp, atk;			//ä½“åŠ›ã€æ”»æ’ƒåŠ›
+	float pos_x, pos_y;		//åº§æ¨™x, y 
+	float scale_x, scale_y;	//ã‚¹ã‚±ãƒ¼ãƒ«x, y
+	float speed;			//ã‚¹ãƒ”ãƒ¼ãƒ‰
+	float jumpPower;		//ã‚¸ãƒ£ãƒ³ãƒ—åŠ›
+	float gaugeBar;			//å¿…æ®ºæŠ€ã®ã‚²ãƒ¼ã‚¸ãƒãƒ¼
+	bool isJump;			//ã‚¸ãƒ£ãƒ³ãƒ—ã®ãƒ•ãƒ©ã‚°
+	bool isDeathbrow;		//å¿…æ®ºæŠ€ã®ãƒ•ãƒ©ã‚°
+	//ãƒ¡ãƒ³ãƒãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰
+  void update() {}
+  void draw() {}
 };

@@ -10,6 +10,18 @@
     <Filter Include="Source">
       <UniqueIdentifier>{d27feaa0-3360-469d-90cf-076752a60639}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Frameworks">
+      <UniqueIdentifier>{d9b5cc46-4cbb-4016-b782-1482a53d13d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects">
+      <UniqueIdentifier>{979ac1e9-5fa6-4f26-8237-03f8f9d573a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scene">
+      <UniqueIdentifier>{b2ae1f5e-0b96-4aa2-ab78-93d2240f2ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utility">
+      <UniqueIdentifier>{40a89ec7-a936-4905-86c4-bd1912f2197c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lib\appEnv.hpp">
@@ -84,50 +96,59 @@
     <ClInclude Include="src\lib\wav.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Objects\object.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Scene\mainGame.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Scene\result.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Scene\sceneBase.hpp">
-      <Filter>Source</Filter>
+    <ClInclude Include="src\Scene\sceneManager.h">
+      <Filter>Source\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Scene\sceneMaker.hpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scene\sceneManager.h">
-      <Filter>Source</Filter>
+    <ClInclude Include="src\Scene\sceneBase.hpp">
+      <Filter>Source\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Scene\title.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="src\System\asset.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="src\System\picojson.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utility\collision.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Utility\constants.hpp">
-      <Filter>Source</Filter>
+    <ClInclude Include="src\Scene\result.h">
+      <Filter>Source\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\Utility\renderer.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine2d.hpp">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gamePlayer.hpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Utility</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\Player.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\object.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\mainGame.h">
+      <Filter>Source\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\collision.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\constants.hpp">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\asset.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\picojson.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gamePlayer.hpp">
+      <Filter>Source\Frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine2d.hpp">
+      <Filter>Source\Frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\EnemyBase.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\EnemyOne.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\EnemyTwo.h">
+      <Filter>Source\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -194,29 +215,35 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scene\mainGame.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Scene\result.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="src\Scene\sceneManager.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Scene\title.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="src\System\application.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="src\System\asset.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="src\Scene\result.cpp">
+      <Filter>Source\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Utility\renderer.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Utility</Filter>
     </ClCompile>
     <ClCompile Include="src\Objects\Player.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\mainGame.cpp">
+      <Filter>Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\asset.cpp">
+      <Filter>Source\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\application.cpp">
+      <Filter>Source\Frameworks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\EnemyBase.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\EnemyOne.cpp">
+      <Filter>Source\Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
