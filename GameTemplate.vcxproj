@@ -45,6 +45,9 @@
     <ClInclude Include="src\lib\utils.hpp" />
     <ClInclude Include="src\lib\vector.hpp" />
     <ClInclude Include="src\lib\wav.hpp" />
+    <ClInclude Include="src\Objects\Enemy\EnemyBase.h" />
+    <ClInclude Include="src\Objects\Enemy\EnemyOne.h" />
+    <ClInclude Include="src\Objects\Enemy\EnemyTwo.h" />
     <ClInclude Include="src\Objects\object.h" />
     <ClInclude Include="src\Objects\Player.h" />
     <ClInclude Include="src\Scene\mainGame.h" />
@@ -81,7 +84,12 @@
     <ClCompile Include="src\lib\utils.cpp" />
     <ClCompile Include="src\lib\wav.cpp" />
     <ClCompile Include="src\main.cpp" />
+<<<<<<< HEAD
+    <ClCompile Include="src\Objects\Enemy\EnemyBase.cpp" />
+    <ClCompile Include="src\Objects\Enemy\EnemyOne.cpp" />
+=======
     <ClCompile Include="src\Objects\Player.cpp" />
+>>>>>>> e926c56fff8a7babdb41cc831da78e1012dfae30
     <ClCompile Include="src\Scene\mainGame.cpp" />
     <ClCompile Include="src\Scene\result.cpp" />
     <ClCompile Include="src\Scene\sceneManager.cpp" />
