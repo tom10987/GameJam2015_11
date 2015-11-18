@@ -10,6 +10,9 @@
     <Filter Include="Source">
       <UniqueIdentifier>{d27feaa0-3360-469d-90cf-076752a60639}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{ecc1a3d8-8f85-4e56-8ecb-bc10d521d8a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\lib\appEnv.hpp">
@@ -126,6 +129,15 @@
     <ClInclude Include="src\gamePlayer.hpp">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="src\Objects\Enemy\EnemyBase.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Enemy\EnemyOne.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Enemy\EnemyTwo.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\lib\appEnv.cpp">
@@ -211,6 +223,12 @@
     </ClCompile>
     <ClCompile Include="src\Utility\renderer.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Enemy\EnemyBase.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Enemy\EnemyOne.cpp">
+      <Filter>Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

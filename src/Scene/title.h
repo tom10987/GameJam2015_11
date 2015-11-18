@@ -1,6 +1,9 @@
 ﻿
 #pragma once
 #include "sceneBase.hpp"
+#include "../Objects/Enemy/EnemyOne.h"
+#include "../Objects/Enemy/EnemyTwo.h"
+#include <memory>
 
 
 namespace engine2d {
@@ -15,6 +18,8 @@ public:
   void draw() override;
 
 private:
+	std::shared_ptr<EnemyOne> enemy_one;
+	std::shared_ptr<EnemyTwo> enemy_two;
 };
 
 
