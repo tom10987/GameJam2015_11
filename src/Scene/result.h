@@ -10,11 +10,13 @@ namespace scene {
 class Result : public SceneBase {
 public:
   Result();
+  ~Result();
 
   void update() override;
   void draw() override;
 
 private:
+	Font* font;
 };
 
 

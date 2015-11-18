@@ -7,15 +7,27 @@ namespace es = engine2d::scene;
 
 es::Result::Result() :
   SceneBase(SceneName::Result, SceneName::Title) {
+	font = new Font("res/meiryo.ttc");
+	font->size(40);
+}
+
+
+es::Result::~Result(){
+	delete font;
 }
 
 
 void es::Result::update() {
-  isFinish_ = env().isPushKey(KeyBind::Space);
+  isFinish_ = env().isPushKey(GLFW_KEY_UP);
+  isFinish_ = env().isPushKey(GLFW_KEY_DOWN);
+  //isFinish_ = env().isPushKey(KeyBind::Escape);
 }
 
 
 void es::Result::draw() {
-  eg::drawCircle(Vec2f::Zero(),
-                 Vec2f::Ones() * 20.0f, 20, Color::red);
+	eg::drawBox(Vec2f(-100, 50), Vec2f(200, 50), Color::cyan);
+	eg::drawString("タイトル", Vec2f( -80 , 62), Color::white, *font);
+	eg::drawBox(Vec2f(-100, -50), Vec2f(200, 50), Color::lime);
+	eg::drawString("リトライ", Vec2f(-80, -40), Color::white, *font);
 }
+ 
