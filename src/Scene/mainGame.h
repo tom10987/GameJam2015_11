@@ -35,6 +35,7 @@ private:
 
   void LoadData();
   void force();
+  void deadEnemyRemove();
 };
 
 
