@@ -25,6 +25,11 @@ private:
   Data data;
   Sprite sprite;
 
+  Media normal;
+  Media special;
+  Media bossBattle;
+  Media bossBattleSpecial;
+
   Camera camera;
   Player player;
   Vec2f backForce;
@@ -32,12 +37,17 @@ private:
 
   bool inGroundFlag;
 
+  bool hoge;
+
   BackGround bg;
   std::list<StageBlock> blocks;
   std::list<pEnemyBase> enemies;
 
+  Texture cut;
+  Vec2f cutSize;
+
   void LoadData();
-  void force();
+  void addForce();
   void deadEnemyRemove();
 
   void loading(std::ifstream&, const bool);

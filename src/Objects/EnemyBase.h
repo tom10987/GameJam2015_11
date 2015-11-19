@@ -45,7 +45,7 @@ typedef std::shared_ptr<EnemyBase>  pEnemyBase;
 class EnemyGround : public EnemyBase {
 public:
   EnemyGround(const Vec2f& pos) :
-    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero()) {
+    EnemyBase(pos, Vec2f(96, 96), Vec2f::Ones() * 256) {
     hp = 1;
     attackPower = 1;
     force = 1;
@@ -57,7 +57,7 @@ public:
 class EnemyFlying : public EnemyBase {
 public:
   EnemyFlying(const Vec2f& pos) :
-    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero()) {
+    EnemyBase(pos, Vec2f(96, 96), Vec2f::Ones() * 256) {
     hp = 2;
     attackPower = 3;
     force = 2;
@@ -69,8 +69,8 @@ public:
 class Boss : public EnemyBase {
 public:
   Boss(const Vec2f& pos) :
-    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero()) {
-    hp = 19000;
+    EnemyBase(pos, Vec2f::Ones() * 1024, Vec2f::Ones() * 512) {
+    hp = 30000;
     attackPower = 4;
     force = 1;
     textureID = 2;
