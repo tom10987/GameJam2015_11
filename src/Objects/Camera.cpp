@@ -16,11 +16,19 @@ void Camera::Update(const Player* player) {
   const auto delta = player->getPos() - pos;
   const float deltaRatio = 0.1f;
 
-  pos += delta * deltaRatio;
+  pos += delta * deltaRatio + Vec2f(36, 0);
 
   //pos.x() = std::max(pos.x(), areaInf.x());
   //pos.x() = std::min(pos.x(), areaSup.x());
 
+  pos.y() = std::max(pos.y(), areaInf.y());
+  pos.y() = std::min(pos.y(), areaSup.y());
+}
+
+
+void Camera::Translate(const Player* player) {
+  const auto delta = player->getPos() - pos;
+  pos += delta;
   pos.y() = std::max(pos.y(), areaInf.y());
   pos.y() = std::min(pos.y(), areaSup.y());
 }

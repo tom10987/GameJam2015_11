@@ -10,6 +10,7 @@ public:
   Camera(const Vec2f&, const Vec2f&);
 
   void Update(const Player*);
+  void Translate(const Player*);
   const Vec2f& getPos() const { return pos; }
 
 private:

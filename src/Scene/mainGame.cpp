@@ -17,7 +17,7 @@ es::MainGame::MainGame() :
   backForce(0, 0),
   constantForce(-3, 3) {
 
-  sprite.block = Texture("res/hoge.png");
+  sprite.block = Texture("res/block.png");
   sprite.enemy.clear();
   sprite.enemy.push_back(Texture("res/hoge.png"));
   sprite.enemy.push_back(Texture("res/hoge.png"));
@@ -25,7 +25,7 @@ es::MainGame::MainGame() :
 
   // カメラの補正
   // あらかじめプレイヤーの位置に移動させておく
-  camera.Update(&player);
+  camera.Translate(&player);
 }
 
 
@@ -100,7 +100,7 @@ void es::MainGame::update() {
     const auto isMoved = bg.checkPoint(player.getPos().x());
 
     // 背景が移動したら敵キャラと足場を新しく生成する
-    //if (isMoved) { LoadData(); }
+    if (isMoved) { LoadData(); }
 
     // 移動
     player.move(deltaTime);
@@ -135,8 +135,8 @@ void es::MainGame::LoadData() {
   std::ifstream load1(out1.str().c_str());
   if (load1) { loading(load1, false); }
 
-  //std::ifstream load2(out2.str().c_str());
-  //if (load2) { loading(load2, true); }
+  std::ifstream load2(out2.str().c_str());
+  if (load2) { loading(load2, true); }
 }
 
 
@@ -187,8 +187,7 @@ void es::MainGame::loading(std::ifstream& file, const bool isSecond) {
     // 背景が動いた回数を取得
     const auto count = bg.getCount();
 
-    const auto size = bg.getSize() - Vec2f(0, bg.getSize().y());
-    const auto offset = size * (isSecond ? (count + 1) : count) - size / 2;
+    const auto offset = Vec2f(player.getPos().x(), 0) + Vec2f(isSecond ? BG_WIDTH : BG_WIDTH / 2, 0);
     const auto pos = Vec2f(x, y) * 96 + Vec2f(0, StageGround) + offset;
 
     DOUT << "player.x = " << player.getPos().x() << std::endl;

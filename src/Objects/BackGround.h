@@ -15,8 +15,11 @@ public:
   const int getCount() const { return checkCount; }
 
 private:
-  Texture texture;
+  Texture backGround;
   Vec2f texSize;
+
+  Texture ground;
+  Vec2f blockSize;
 
   Vec2f pos;
   int checkCount;

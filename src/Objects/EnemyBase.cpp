@@ -4,12 +4,10 @@
 
 EnemyBase::EnemyBase(const Vec2f& pos,
                      const Vec2f& scale,
-                     const Vec2f& textureSize,
-                     const Color& color) :
+                     const Vec2f& textureSize) :
   pos(pos),
   scale(scale),
-  texSize(textureSize),
-  color(color) {
+  texSize(textureSize) {
 }
 
 
