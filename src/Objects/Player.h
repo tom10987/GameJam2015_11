@@ -49,7 +49,8 @@ private:
 	Vec2f pos;
 	Vec2f scale;
 
-	Texture texture;
+	Texture dot;
+	Texture real;
 	Vec2f texSize;
 	int animeTime;
 

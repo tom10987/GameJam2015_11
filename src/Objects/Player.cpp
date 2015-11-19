@@ -5,7 +5,7 @@ namespace eg = engine2d;
 
 
 Player::Player() :
-  texture("res/hero_dot.png"),
+  dot("res/hero_dot.png"),
   pos(BG_WIDTH / 2, BG_HEIGHT / 2),
   scale(96, 96),
   texSize(32, 32),
@@ -45,7 +45,7 @@ void Player::jump() {
   // ジャンプしてないときにキーを押したらジャンプする
   if (!push || isJump) { return; }
   isJump = true;
-  jumpPower = 20.0f;
+  jumpPower = 40.0f;
 }
 
 
@@ -88,6 +88,6 @@ void Player::Draw(const Vec2f& camera) {
 
   drawTextureBox(DrawPos.x(), DrawPos.y(), scale.x(), scale.y(),
                  blink * texSize.x(), 0, texSize.x(), texSize.y(),
-                 texture, Color::white,
+                 dot, Color::white,
                  0.0f, Vec2f::Ones(), Vec2f(scale.x() * 0.5f, 0));
 }
