@@ -6,7 +6,7 @@
 
 class EnemyBase {
 public:
-  EnemyBase(const Vec2f&, const Vec2f&, const Vec2f&, const Color&);
+  EnemyBase(const Vec2f&, const Vec2f&, const Vec2f&);
   virtual ~EnemyBase() {}
 
   void update();
@@ -45,7 +45,7 @@ typedef std::shared_ptr<EnemyBase>  pEnemyBase;
 class EnemyGround : public EnemyBase {
 public:
   EnemyGround(const Vec2f& pos) :
-    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero(), Color::white) {
+    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero()) {
     hp = 1;
     attackPower = 1;
     force = 1;
@@ -57,7 +57,7 @@ public:
 class EnemyFlying : public EnemyBase {
 public:
   EnemyFlying(const Vec2f& pos) :
-    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero(), Color::white) {
+    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero()) {
     hp = 2;
     attackPower = 3;
     force = 2;
@@ -69,7 +69,7 @@ public:
 class Boss : public EnemyBase {
 public:
   Boss(const Vec2f& pos) :
-    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero(), Color::white) {
+    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero()) {
     hp = 19000;
     attackPower = 4;
     force = 1;

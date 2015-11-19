@@ -4,10 +4,12 @@
 
 
 BackGround::BackGround(const float posX) :
-  texture("res/back_ground.png"),
+  backGround("res/back_ground.png"),
+  ground("res/ground.png"),
   pos(posX, 0),
   checkCount(0),
-  texSize(BG_WIDTH, BG_HEIGHT) {
+  texSize(BG_WIDTH, BG_HEIGHT),
+  blockSize(128, 128) {
 }
 
 
@@ -19,12 +21,21 @@ void BackGround::Draw(const Vec2f& camera) {
   // １枚目
   drawTextureBox(DrawPos.x(), DrawPos.y(), texSize.x(), texSize.y(),
                  0, 0, texSize.x(), texSize.y(),
-                 texture, Color::white);
+                 backGround, Color::white);
 
   // ２枚目
   drawTextureBox(DrawPos.x() + BG_WIDTH, DrawPos.y(), texSize.x(), texSize.y(),
                  0, 0, texSize.x(), texSize.y(),
-                 texture, Color::white);
+                 backGround, Color::white);
+
+  // ステージの床
+  const int count = BG_WIDTH / (int)blockSize.x();
+  for (int i = 0; i < count * 2; ++i) {
+    drawTextureBox(DrawPos.x() + i * blockSize.x(), DrawPos.y(),
+                   blockSize.x(), blockSize.y(),
+                   0, 0, blockSize.x(), blockSize.y(),
+                   ground, Color::white);
+  }
 }
 
 
