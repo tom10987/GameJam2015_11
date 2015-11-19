@@ -15,8 +15,7 @@ Player::Player() :
   hp(10),
   attack(1),
   isJump(false),
-  jumpPower(0.0f),
-  gauge(0) {
+  jumpPower(0.0f) {
   countTimer = 0.0f;
   isInvincible = false;
 };
@@ -25,8 +24,7 @@ void Player::Invincible() {
   isInvincible = true;
   hp = 10;
   attack = 9999;
-  countTimer = 60.0f * gauge;
-  gauge = 0;
+  countTimer = 60.0f * 5.0f;
 }
 
 void Player::cancelInvincible() {
@@ -88,6 +86,21 @@ void Player::Draw(const Vec2f& camera) {
 
   //DEBUG
   //drawFillBox(DrawPos.x(), DrawPos.y(), dot_scale.x(), dot_scale.y(), Color::white);
+
+  // 必殺ゲージ
+  {
+    const float gaugeRatio = countTimer / (60.0f * 5);
+    drawFillBox(-eg::Width / 2 + 20, 0, 50, eg::Height / 2 - 20, Color::black);
+    drawFillBox(-eg::Width / 2 + 20, 0, 50, (eg::Height / 2 - 20) * gaugeRatio, Color::magenta);
+  }
+
+  // HP ゲージ
+  {
+    const float gaugeRatio = (float)hp / 10.0f;
+    const float posY = DrawPos.y() + (isInvincible ? 150 : 100);
+    drawFillBox(DrawPos.x() - 50, posY, 100, 20, Color::black);
+    drawFillBox(DrawPos.x() - 50, posY, 100 * gaugeRatio, 20, Color::lime);
+  }
 
   if (isInvincible == false) {
     const auto blink = (animeTime / 10) % 2;

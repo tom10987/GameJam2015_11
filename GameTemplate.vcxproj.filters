@@ -162,6 +162,9 @@
     <ClInclude Include="src\Objects\StageBlock.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="src\Scene\Boss.h">
+      <Filter>Source\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\lib\appEnv.cpp">
@@ -268,6 +271,9 @@
     </ClCompile>
     <ClCompile Include="src\Objects\StageBlock.cpp">
       <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\Boss.cpp">
+      <Filter>Source\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
