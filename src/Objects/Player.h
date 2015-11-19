@@ -13,7 +13,7 @@ public:
 	// 他のオブジェクトとの判定用
 
 	const Vec2f& getPos() const { return pos; }
-	const Vec2f& getScale() const { return scale; }
+	const Vec2f& getScale() const { return dot_scale; }
 
 	//------------------------------------------------------------
 	// プレイヤー更新の機能
@@ -47,9 +47,11 @@ public:
 	void cancelInvincible();
 private:
 	Vec2f pos;
-	Vec2f scale;
+	Vec2f dot_scale;
+	Vec2f real_scale;
 
-	Texture texture;
+	Texture dot;
+	Texture real;
 	Vec2f texSize;
 	int animeTime;
 
