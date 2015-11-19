@@ -8,6 +8,7 @@ public:
   StageBlock(const Vec2f&);
 
   void draw(const Vec2f&, Texture&);
+  const Vec2f& getPos() const { return pos; }
 
 private:
   Vec2f pos;

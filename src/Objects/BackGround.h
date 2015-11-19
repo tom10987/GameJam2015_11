@@ -10,6 +10,7 @@ public:
   void Draw(const Vec2f&);
   const bool checkPoint(const float);
 
+  const Vec2f& getPos() const { return pos; }
   const Vec2f& getSize() const { return texSize; }
   const int getCount() const { return checkCount; }
 

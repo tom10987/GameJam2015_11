@@ -7,6 +7,7 @@
 #include "../Objects/BackGround.h"
 #include "../Objects/StageBlock.h"
 #include <list>
+#include <fstream>
 
 
 namespace engine2d {
@@ -36,6 +37,8 @@ private:
   void LoadData();
   void force();
   void deadEnemyRemove();
+
+  void loading(std::ifstream&, const bool);
 };
 
 

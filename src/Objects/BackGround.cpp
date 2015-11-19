@@ -1,5 +1,6 @@
 ﻿
 #include "BackGround.h"
+#include <iostream>
 
 
 BackGround::BackGround(const float posX) :
@@ -29,6 +30,9 @@ void BackGround::Draw(const Vec2f& camera) {
 
 // 背景の位置をずらす
 const bool BackGround::checkPoint(const float playerX) {
+  DOUT << "bg pos.x = " << pos.x() << std::endl;
+  DOUT << "bg pos.y = " << pos.y() << std::endl << std::endl;
+
   const auto width = static_cast<float>(BG_WIDTH);
   const auto offset = width * 0.5f;
   const auto newPosX = width * (checkCount + 1) + offset;
