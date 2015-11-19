@@ -9,6 +9,7 @@ public:
 
   void draw(const Vec2f&, Texture&);
   const Vec2f& getPos() const { return pos; }
+  const Vec2f& getSize() const { return scale; }
 
 private:
   Vec2f pos;
