@@ -30,6 +30,8 @@ private:
   Vec2f backForce;
   const Vec2f constantForce;
 
+  bool inGroundFlag;
+
   BackGround bg;
   std::list<StageBlock> blocks;
   std::list<pEnemyBase> enemies;

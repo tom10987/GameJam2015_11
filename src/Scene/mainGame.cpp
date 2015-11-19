@@ -16,6 +16,7 @@ es::MainGame::MainGame() :
   bg(0.0f),
   backForce(0, 0),
   constantForce(-3, 3) {
+  inGroundFlag = false;
 
   sprite.block = Texture("res/block.png");
   sprite.enemy.clear();
@@ -26,6 +27,7 @@ es::MainGame::MainGame() :
   // カメラの補正
   // あらかじめプレイヤーの位置に移動させておく
   camera.Translate(&player);
+  player.setJumpState();
 }
 
 
@@ -36,29 +38,72 @@ void es::MainGame::update() {
   // 重力を先に与えてから高さの補正を行うことで、
   // 一瞬地面にめり込むような表示が無くなる
   {
-    // ジャンプ判定
-    player.jump();
+    // 重力をかける前の Y 座標
+    const auto prevPosY = player.getPos().y();
 
     // 重力
     player.gravity();
 
+    // 重力をかけた後の座標
+    const auto currentPos = player.getPos();
+    const auto size = player.isInvincible ? player.getRealScale() : player.getDotScale();
+
+    // 落下中の判定
+    const auto isGravity = prevPosY > currentPos.y();
+
+    // 足場に乗ったかどうか
+    const auto onGround = [&](const Vec2f& gPos,
+                              const Vec2f& gSize) {
+      // 落下中でなければ無視する
+      if (!isGravity) { return false; }
+
+      const auto inL = currentPos.x() > gPos.x();
+      const auto inR = currentPos.x() < gPos.x() + gSize.x();
+      const auto inT = currentPos.y() < gPos.y() + gSize.y();
+      return inL && inR && inT;
+    };
+
+    inGroundFlag = false;
+
     // 足場との当たり判定
     for (auto& block : blocks) {
+      // プレイヤーが足場よりも下にいるかどうか
+      const auto isLowPos = currentPos.y() < block.getPos().y();
+      if (isLowPos) { continue; }
+
+      if (onGround(block.getPos(), block.getSize())) {
+        const auto y = block.getPos().y() + block.getSize().y();
+        player.landing(y);
+        inGroundFlag = !inGroundFlag;
+      }
     }
 
+    if (!inGroundFlag) { player.setJumpState(); }
+
     // 地面との当たり判定
-    if (player.getPos().y() < StageGround) { player.landing(StageGround); }
+    if (currentPos.y() < StageGround) { player.landing(StageGround); }
+
+    // ジャンプ判定
+    player.jump();
+
+    // 敵に当たったかどうか
+    const auto isHitEnemy = [&](const Vec2f& ePos,
+                                const Vec2f& eSize) {
+      const auto inL = currentPos.x() >= ePos.x();
+      const auto inR = currentPos.x() <= ePos.x() + eSize.x();
+      const auto inB = currentPos.y() >= ePos.y();
+      const auto inT = currentPos.y() <= ePos.y() + eSize.y();
+      return inL && inR && inT && inB;
+    };
 
     // 敵との当たり判定
     // 当たっていたらノックバック処理
     for (auto& enemy : enemies) {
       // 当たっていなければ、スキップ
-      if (true) { continue; }
+      if (!isHitEnemy(enemy->getPos(), enemy->getScale())) { continue; }
 
-      backForce = constantForce * deltaTime;
-      player.setJumpState();
-
-      player.HP() -= enemy->getAttack();
+      // 無敵状態でなければダメージを受ける
+      if (!player.isInvincible) { player.HP() -= enemy->getAttack(); }
       enemy->damage(player.Attack());
 
       //player.hp <= 0;
@@ -68,10 +113,17 @@ void es::MainGame::update() {
         next_ = SceneName::Result;
         isFinish_ = true;
       }
+
       // 敵のHPが0であれば
       if (enemy->isDead()) {
-        //更にプレイヤーの必殺技ゲージを加算
+        // 更にプレイヤーの必殺技ゲージを加算
         player.Gauge() += enemy->getGaugePower();
+      }
+      else {
+        // 吹っ飛ばす
+        backForce = constantForce * deltaTime;
+        player.setJumpState();
+        player.resetJumpPower();
       }
 
       // プレイヤーが無敵状態であればゲージを減らす
@@ -209,7 +261,7 @@ void es::MainGame::loading(std::ifstream& file, const bool isSecond) {
         }
       }
       // TODO: プレイヤーが無敵だったときに修正する
-      else if (isSecond) {
+      else if (player.isInvincible) {
         switch (enemyID) {
           case 1: enemies.push_back(std::make_shared<EnemyGround>(pos)); break;
           case 2: enemies.push_back(std::make_shared<EnemyFlying>(pos)); break;
