@@ -19,13 +19,14 @@ public:
   static bool isGameOver;
 
   static int playerHP;
-  static int playerAttack;
+  static int playerGauge;
 };
 
 class Sprite {
 public:
   static Texture block;
-  static Texture enemy;
+  static Texture enemyGround;
+  static Texture enemyFlying;
   static Texture boss;
 };
 
