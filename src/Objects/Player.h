@@ -55,6 +55,7 @@ private:
 
   Texture dot;
   Texture real;
+
   Vec2f texSize;
   int animeTime;
 

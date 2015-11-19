@@ -15,8 +15,11 @@ es::MainGame::MainGame() :
   camera(Vec2f::Zero(), Vec2f(BG_WIDTH, BG_HEIGHT)),
   bg(0.0f),
   backForce(0, 0),
+  cut("res/cut-in.png"),
+  cutSize(1440, 810),
   constantForce(-3, 3) {
   inGroundFlag = false;
+  hoge = false;
 
   sprite.block = Texture("res/block.png");
   sprite.enemy.clear();
@@ -24,10 +27,25 @@ es::MainGame::MainGame() :
   sprite.enemy.push_back(Texture("res/enemy2.png"));
   sprite.enemy.push_back(Texture("res/maou.png"));
 
+  normal = Media("res/BGM/NormalBGM.wav");
+  special = Media("res/BGM/TransformBGM.wav");
+  bossBattle = Media("res/BGM/BossBGM.wav");
+  bossBattleSpecial = Media("res/BGM/boss.wav");
+
   // カメラの補正
   // あらかじめプレイヤーの位置に移動させておく
   camera.Translate(&player);
   player.setJumpState();
+
+  normal.gain(0.5f);
+  normal.looping(true);
+
+  special.gain(0.5f);
+  special.looping(true);
+  bossBattle.gain(0.5f);
+  bossBattle.looping(true);
+
+  normal.play();
 }
 
 
@@ -128,7 +146,7 @@ void es::MainGame::update() {
 
       // プレイヤーが無敵状態であればゲージを減らす
       if (player.isInvincible == true) {
-        player.countTimer -= 1.0f;
+        player.countTimer -= deltaTime;
         if (player.countTimer < 0) {
           player.cancelInvincible();
         }
@@ -137,6 +155,8 @@ void es::MainGame::update() {
       // プレイヤーの必殺技ゲージがMAXであれば
       if (player.IsGaugeMax()) {
         player.Invincible();
+        normal.stop();
+        if (!bossBattle.isPlaying()) special.play();
       }
 
       break;
@@ -146,7 +166,7 @@ void es::MainGame::update() {
     deadEnemyRemove();
 
     // ノックバック処理
-    force();
+    addForce();
 
     // プレイヤーの移動距離から、次の背景を表示するか判定
     const auto isMoved = bg.checkPoint(player.getPos().x());
@@ -161,15 +181,36 @@ void es::MainGame::update() {
   // カメラ更新
   camera.Update(&player);
 
+  if (player.getPos().x() > 20000 && !hoge) {
+    enemies.push_back(std::make_shared<Boss>(Vec2f(21000, 0)));
+    hoge = true;
+
+    normal.stop();
+    special.stop();
+    !player.isInvincible ? bossBattle.play() : bossBattleSpecial.play();
+  }
+
+  if (hoge && player.getPos().x() > 21000) {
+    isFinish_ = true;
+  }
+
   // デバッグ用
 #ifdef _DEBUG
-  isFinish_ = env().isPushButton(Mouse::RIGHT);
+  //isFinish_ = env().isPushButton(Mouse::RIGHT);
 #endif
 }
 
 
 void es::MainGame::draw() {
   bg.Draw(camera.getPos());
+
+  if (player.isInvincible) {
+    drawTextureBox(0, 0, cutSize.x(), cutSize.y(),
+                   0, 0, cutSize.x(), cutSize.y(),
+                   cut, Color::white,
+                   0, Vec2f::Ones(), cutSize * 0.5f);
+  }
+
   for (auto& block : blocks) { block.draw(camera.getPos(), sprite.block); }
   for (auto& enemy : enemies) { enemy->draw(camera.getPos(), sprite.enemy[enemy->getID()]); }
   player.Draw(camera.getPos());
@@ -192,7 +233,7 @@ void es::MainGame::LoadData() {
 }
 
 
-void es::MainGame::force() {
+void es::MainGame::addForce() {
   if (backForce.x() < 0.0f) { backForce.x() += 1.0f; }
   if (backForce.y() > 0.0f) { backForce.y() -= 1.0f; }
   player.translate(backForce);

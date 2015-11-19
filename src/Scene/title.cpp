@@ -14,7 +14,7 @@ es::Title::Title() :
   small_font = new Font("res/font.ttf");
   small_font->size(25);
   title_font = new Font("res/font.ttf");
-  title_font->size(170);
+  title_font->size(100);
   texture = Texture("res/title.png");
   title_angle = 0.0f;
   y = 0;
@@ -41,7 +41,8 @@ void es::Title::draw() {
   drawTextureBox(-Width / 2, -Height / 2, Width, Height, 0, 0, 1430, 790,
                  texture, Color::white);
 
-  eg::drawStringCenter("ドット勇者", Vec2f(-280, 250 + y), Color::white, *title_font);
+  eg::drawString("ゆうしゃは", Vec2f(-eg::Width / 2 + 10, 250 + y), Color::white, *title_font);
+  eg::drawString("　のろわれている！！", Vec2f(-eg::Width / 2 + 10, 150 + y), Color::white, *title_font);
   eg::drawStringCenter("GAME START", Vec2f(-250, 0), Color::white, *font);
   eg::drawStringCenter("[PUSH SPACE KEY]", Vec2f(-250, -45), Color::white, *small_font);
 }
