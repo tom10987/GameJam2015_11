@@ -30,12 +30,15 @@ es::Result::~Result() {
 
 void es::Result::update() {
   // キー入力
-	if (env().isPushButton(Mouse::RIGHT))
-	{
-		data.isGameOver = true;
-
+	//data.isGameOver = true;
+	isFinish_ = eg::env().isPushKey(Space);
+	if (data.isGameOver){
+		if (eg::env().isPushKey(KeyBind::Enter)){
+			next_ = SceneName::Main;
+			isFinish_ = true;
+		}
 	}
-
+	
 
   y = std::abs(std::sin(result_angle)) * 20.0f;
   result_angle += 0.08f;
