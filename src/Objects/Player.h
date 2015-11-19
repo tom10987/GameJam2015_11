@@ -38,7 +38,13 @@ public:
 	int& Gauge() { return gauge; }
 
 	//------------------------------------------------------------
+	// 必殺技の内容
 
+	bool isInvincible = false;
+	float countTimer; 
+
+	void Invincible();
+	void cancelInvincible();
 private:
 	Vec2f pos;
 	Vec2f scale;

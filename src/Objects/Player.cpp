@@ -15,8 +15,23 @@ Player::Player() :
   isJump(false),
   jumpPower(0.0f),
   gauge(0) {
+	countTimer = 0.0f;
 };
 
+void Player::Invincible()
+{
+	isInvincible = true;
+	hp = 10;
+	attack = 9999;
+	countTimer = 60.0f * gauge;
+	gauge = 0;
+}
+
+void Player::cancelInvincible()
+{
+	isInvincible = false;
+	attack = 1;
+}
 
 void Player::move(const float deltaTime) {
   pos.x() += deltaTime;
