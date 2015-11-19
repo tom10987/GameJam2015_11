@@ -10,42 +10,64 @@ public:
   virtual ~EnemyBase() {}
 
   void update();
-  void draw();
+  void draw(const Vec2f&, Texture&);
 
   const Vec2f& getPos() const { return pos; }
   const Vec2f& getScale() const { return scale; }
 
-  const int getLevel() const { return level; }
+  const int getGaugePower() const { return force; }
   const int getAttack() const { return attackPower; }
+
+  void damage(const int power) { hp -= power; }
+  void animeStart() { animeTime = 60; }
 
 protected:
   Vec2f pos;
   Vec2f scale;
 
-  Vec2f textureSize;
-
-  //Texture texture;
+  Vec2f texSize;
   Color color;
+  int animeTime;
 
-  int level;
+  int hp;
   int attackPower;
+  int force;
+
+  const bool isDead() const { return hp <= 0; }
 };
 
 
 typedef std::shared_ptr<EnemyBase>  pEnemyBase;
 
 
-class Enemy1 : public EnemyBase {
+class EnemyGround : public EnemyBase {
 public:
-  Enemy1(const Vec2f& pos, const Vec2f& scale) :
-    EnemyBase(pos, scale, Vec2f::Zero(), Color::red) {
+  EnemyGround(const Vec2f& pos, const Vec2f& scale) :
+    EnemyBase(pos, scale, Vec2f::Zero(), Color::white) {
+    hp = 1;
+    attackPower = 1;
+    force = 1;
   }
 };
 
 
-class Enemy2 : public EnemyBase {
+class EnemyFlying : public EnemyBase {
 public:
-  Enemy2(const Vec2f& pos, const Vec2f& scale) :
-    EnemyBase(pos, scale, Vec2f::Zero(), Color::blue) {
+  EnemyFlying(const Vec2f& pos, const Vec2f& scale) :
+    EnemyBase(pos, scale, Vec2f::Zero(), Color::white) {
+    hp = 2;
+    attackPower = 3;
+    force = 2;
+  }
+};
+
+
+class Boss : EnemyBase {
+public:
+  Boss(const Vec2f& pos, const Vec2f& scale) :
+    EnemyBase(pos, scale, Vec2f::Zero(), Color::white) {
+    hp = 19000;
+    attackPower = 4;
+    force = 1;
   }
 };
