@@ -1,19 +1,56 @@
 ﻿
 #pragma once
+#include "Camera.h"
+
 
 class Player {
 public:
-	Player();
-	//メンバー変数
-	int hp, atk;			//体力、攻撃力
-	float pos_x, pos_y;		//座標x, y 
-	float scale_x, scale_y;	//スケールx, y
-	float speed;			//スピード
-	float jumpPower;		//ジャンプ力
-	float gaugeBar;			//必殺技のゲージバー
-	bool isJump;			//ジャンプのフラグ
-	bool isDeathbrow;		//必殺技のフラグ
-	//メンバーメソッド
-  void update() {}
-  void draw() {}
+  Player();
+
+  void Draw(const Vec2f&);
+
+  //------------------------------------------------------------
+  // 他のオブジェクトとの判定用
+
+  const Vec2f& getPos() const { return pos; }
+  const Vec2f& getScale() const { return scale; }
+
+  //------------------------------------------------------------
+  // プレイヤー更新の機能
+
+  void move(const float);
+  void jump();
+  void gravity();
+  void landing(const float);
+
+  void translate(const Vec2f&);
+
+  const bool isJumping() const { return isJump; }
+  void setJumpState(const bool jump = true);
+
+  //------------------------------------------------------------
+  // 必殺技とか攻撃力とか
+
+  const bool IsGaugeMax() const { return gauge >= 100; }
+
+  int& HP() { return hp; }
+  int& Attack() { return attack; }
+
+  //------------------------------------------------------------
+
+private:
+  Vec2f pos;
+  Vec2f scale;
+
+  Texture texture;
+  Vec2f texSize;
+  int animeTime;
+
+  int hp;
+  int attack;
+
+  float jumpPower;
+  bool isJump;
+
+  int gauge;
 };

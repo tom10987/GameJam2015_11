@@ -123,16 +123,7 @@
     <ClInclude Include="src\Scene\mainGame.h">
       <Filter>Source\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utility\collision.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="src\Utility\constants.hpp">
-      <Filter>Source\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="src\System\asset.h">
-      <Filter>Source\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="src\System\picojson.h">
       <Filter>Source\Utility</Filter>
     </ClInclude>
     <ClInclude Include="src\gamePlayer.hpp">
@@ -148,6 +139,27 @@
       <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="src\Objects\EnemyTwo.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\screenFilter.h">
+      <Filter>Source\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Camera.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\BackGround.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\asset.h">
+      <Filter>Source\Frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\System\picojson.h">
+      <Filter>Source\Frameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\collision.h">
+      <Filter>Source\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\StageBlock.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
   </ItemGroup>
@@ -233,9 +245,6 @@
     <ClCompile Include="src\Scene\mainGame.cpp">
       <Filter>Source\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="src\System\asset.cpp">
-      <Filter>Source\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="src\System\application.cpp">
       <Filter>Source\Frameworks</Filter>
     </ClCompile>
@@ -243,6 +252,21 @@
       <Filter>Source\Objects</Filter>
     </ClCompile>
     <ClCompile Include="src\Objects\EnemyOne.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\screenFilter.cpp">
+      <Filter>Source\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Camera.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\BackGround.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\System\asset.cpp">
+      <Filter>Source\Frameworks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\StageBlock.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
   </ItemGroup>

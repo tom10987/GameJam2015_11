@@ -1,6 +1,7 @@
 ﻿
 #pragma once
 #include "sceneBase.hpp"
+#include "screenFilter.h"
 
 
 namespace engine2d {
@@ -17,9 +18,10 @@ public:
 private:
   pScene scene_;
   SceneName next_;
-  SceneName prev_;
 
-  bool isSceneChange();
+  Wipe wipe;
+
+  void SceneChange();
 };
 
 
