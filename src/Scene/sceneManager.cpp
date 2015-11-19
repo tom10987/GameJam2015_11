@@ -6,26 +6,29 @@ namespace es = engine2d::scene;
 
 
 es::SceneManager::SceneManager(const SceneName scene) :
-scene_(SceneMaker::create(scene)),
-next_(SceneName::None),
-prev_(SceneName::None) {
+  scene_(SceneMaker::create(scene)),
+  next_(SceneName::None),
+  wipe(40.0f) {
 }
 
 
 void es::SceneManager::update() {
-  //if (scene_->isFinish()) { return; }
+  wipe.update();
+  if (wipe.isFinish()) { SceneChange(); }
+  if (wipe.isFadeActive()) { return; }
+
   scene_->update();
-  if (scene_->isFinish()) { scene_ = SceneMaker::create(scene_->getNextScene()); }
+  if (scene_->isFinish()) { wipe.SequenceStart(); }
 }
 
 
 void es::SceneManager::draw() {
   scene_->draw();
-  // TODO: 画面切り替え演出
-  if (isSceneChange()) {}
+  wipe.draw();
 }
 
 
-bool es::SceneManager::isSceneChange() {
-  return false;
+void es::SceneManager::SceneChange() {
+  scene_ = SceneMaker::create(scene_->getNextScene());
+  wipe.SequenceReset();
 }
