@@ -21,6 +21,8 @@ public:
   void damage(const int power) { hp -= power; }
   void animeStart() { animeTime = 60; }
 
+  const bool isDead() const { return hp <= 0; }
+
 protected:
   Vec2f pos;
   Vec2f scale;
@@ -32,8 +34,6 @@ protected:
   int hp;
   int attackPower;
   int force;
-
-  const bool isDead() const { return hp <= 0; }
 };
 
 
