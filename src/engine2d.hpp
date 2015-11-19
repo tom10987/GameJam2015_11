@@ -25,9 +25,12 @@ public:
 class Sprite {
 public:
   static Texture block;
-  static Texture enemyGround;
-  static Texture enemyFlying;
-  static Texture boss;
+  static std::vector<Texture> enemy;
+};
+
+class Music {
+  static std::vector<Media> bgm;
+  static std::vector<Media> se;
 };
 
 }  // end engine2d

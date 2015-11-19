@@ -7,7 +7,7 @@ namespace es = engine2d::scene;
 
 es::Title::Title() :
   SceneBase(SceneName::Title, SceneName::Main) {
-  font = new Font("res/meiryo.ttc");
+  font = new Font("res/font.ttf");
   font->size(40);
 }
 

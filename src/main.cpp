@@ -4,11 +4,10 @@
 
 bool engine2d::Data::isGameOver = false;
 int engine2d::Data::playerHP = 0;
-int engine2d::Data::playerAttack = 0;
+int engine2d::Data::playerGauge = 0;
 
 Texture engine2d::Sprite::block;
-Texture engine2d::Sprite::enemy;
-Texture engine2d::Sprite::boss;
+std::vector<Texture> engine2d::Sprite::enemy;
 
 
 int main() {

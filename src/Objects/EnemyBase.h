@@ -22,6 +22,7 @@ public:
   void animeStart() { animeTime = 60; }
 
   const bool isDead() const { return hp <= 0; }
+  const int getID() const { return textureID; }
 
 protected:
   Vec2f pos;
@@ -34,6 +35,7 @@ protected:
   int hp;
   int attackPower;
   int force;
+  int textureID;
 };
 
 
@@ -42,32 +44,35 @@ typedef std::shared_ptr<EnemyBase>  pEnemyBase;
 
 class EnemyGround : public EnemyBase {
 public:
-  EnemyGround(const Vec2f& pos, const Vec2f& scale) :
-    EnemyBase(pos, scale, Vec2f::Zero(), Color::white) {
+  EnemyGround(const Vec2f& pos) :
+    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero(), Color::white) {
     hp = 1;
     attackPower = 1;
     force = 1;
+    textureID = 0;
   }
 };
 
 
 class EnemyFlying : public EnemyBase {
 public:
-  EnemyFlying(const Vec2f& pos, const Vec2f& scale) :
-    EnemyBase(pos, scale, Vec2f::Zero(), Color::white) {
+  EnemyFlying(const Vec2f& pos) :
+    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero(), Color::white) {
     hp = 2;
     attackPower = 3;
     force = 2;
+    textureID = 1;
   }
 };
 
 
-class Boss : EnemyBase {
+class Boss : public EnemyBase {
 public:
-  Boss(const Vec2f& pos, const Vec2f& scale) :
-    EnemyBase(pos, scale, Vec2f::Zero(), Color::white) {
+  Boss(const Vec2f& pos) :
+    EnemyBase(pos, Vec2f(96, 96), Vec2f::Zero(), Color::white) {
     hp = 19000;
     attackPower = 4;
     force = 1;
+    textureID = 2;
   }
 };
