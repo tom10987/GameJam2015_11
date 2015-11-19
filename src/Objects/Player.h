@@ -33,11 +33,11 @@ public:
   //------------------------------------------------------------
   // 必殺技とか攻撃力とか
 
-  const bool IsGaugeMax() const { return gauge >= gaugeMax; }
+  const bool IsGaugeMax() const { return countTimer >= (60.0f * 5.0f); }
 
   int& HP() { return hp; }
   int& Attack() { return attack; }
-  int& Gauge() { return gauge; }
+  //int& Gauge() { return gauge; }
 
   //------------------------------------------------------------
   // 必殺技の内容
@@ -63,7 +63,4 @@ private:
 
   float jumpPower;
   bool isJump;
-
-  int gauge;
-  int gaugeMax = 5;
 };

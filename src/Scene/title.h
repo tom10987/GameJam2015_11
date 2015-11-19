@@ -17,8 +17,13 @@ public:
 
 private:
   Font* font;
-};
+  Font* small_font;
+  Font* title_font;
 
+  Texture texture;
+  float title_angle;
+  float y;
+};
 
 }  // end scene
 }  // end engine2d

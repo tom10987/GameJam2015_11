@@ -20,9 +20,9 @@ es::MainGame::MainGame() :
 
   sprite.block = Texture("res/block.png");
   sprite.enemy.clear();
-  sprite.enemy.push_back(Texture("res/hoge.png"));
-  sprite.enemy.push_back(Texture("res/hoge.png"));
-  sprite.enemy.push_back(Texture("res/hoge.png"));
+  sprite.enemy.push_back(Texture("res/enemy1.png"));
+  sprite.enemy.push_back(Texture("res/enemy2.png"));
+  sprite.enemy.push_back(Texture("res/maou.png"));
 
   // カメラの補正
   // あらかじめプレイヤーの位置に移動させておく
@@ -89,9 +89,9 @@ void es::MainGame::update() {
     // 敵に当たったかどうか
     const auto isHitEnemy = [&](const Vec2f& ePos,
                                 const Vec2f& eSize) {
-      const auto inL = currentPos.x() >= ePos.x();
+      const auto inL = currentPos.x() + size.x() >= ePos.x();
       const auto inR = currentPos.x() <= ePos.x() + eSize.x();
-      const auto inB = currentPos.y() >= ePos.y();
+      const auto inB = currentPos.y() + size.y() >= ePos.y();
       const auto inT = currentPos.y() <= ePos.y() + eSize.y();
       return inL && inR && inT && inB;
     };
@@ -117,7 +117,7 @@ void es::MainGame::update() {
       // 敵のHPが0であれば
       if (enemy->isDead()) {
         // 更にプレイヤーの必殺技ゲージを加算
-        player.Gauge() += enemy->getGaugePower();
+        player.countTimer += enemy->getGaugePower() * 60.0f;
       }
       else {
         // 吹っ飛ばす

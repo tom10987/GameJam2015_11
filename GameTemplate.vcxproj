@@ -53,6 +53,7 @@
     <ClInclude Include="src\Objects\object.h" />
     <ClInclude Include="src\Objects\Player.h" />
     <ClInclude Include="src\Objects\StageBlock.h" />
+    <ClInclude Include="src\Scene\Boss.h" />
     <ClInclude Include="src\Scene\mainGame.h" />
     <ClInclude Include="src\Scene\result.h" />
     <ClInclude Include="src\Scene\sceneBase.hpp" />
@@ -94,6 +95,7 @@
     <ClCompile Include="src\Objects\EnemyOne.cpp" />
     <ClCompile Include="src\Objects\Player.cpp" />
     <ClCompile Include="src\Objects\StageBlock.cpp" />
+    <ClCompile Include="src\Scene\Boss.cpp" />
     <ClCompile Include="src\Scene\mainGame.cpp" />
     <ClCompile Include="src\Scene\result.cpp" />
     <ClCompile Include="src\Scene\sceneManager.cpp" />
